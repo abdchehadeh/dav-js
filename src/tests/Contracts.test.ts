@@ -125,7 +125,7 @@ describe('Contracts class', () => {
 
     it('should call relevant functions and throw web3 error', async () => {
       isRegisteredCall.mockImplementation(() => false);
-      sendSignedTransactionSuccess.mockImplementation(() => false);
+      sendSignedTransactionSuccess.mockImplementation(() => jest.fn(() => false));
       const contracts: any = (await import('../Contracts')).default;
       await expect(
         contracts.registerIdentity(
@@ -182,7 +182,7 @@ describe('Contracts class', () => {
     });
 
     it('should call relevant functions and throw web3 error', async () => {
-      sendSignedTransactionSuccess.mockImplementation(() => false);
+      sendSignedTransactionSuccess.mockImplementation(() => jest.fn(() => false));
       const contracts: any = (await import('../Contracts')).default;
       await expect(
         contracts.approveMission(
@@ -241,7 +241,7 @@ describe('Contracts class', () => {
     });
 
     it('should call relevant functions and throw web3 error', async () => {
-      sendSignedTransactionSuccess.mockImplementation(() => false);
+      sendSignedTransactionSuccess.mockImplementation(() => jest.fn(() => false));
       const contracts: any = (await import('../Contracts')).default;
       await expect(
         contracts.startMission(
@@ -301,7 +301,7 @@ describe('Contracts class', () => {
     });
 
     it('should call relevant functions and throw web3 error', async () => {
-      sendSignedTransactionSuccess.mockImplementation(() => false);
+      sendSignedTransactionSuccess.mockImplementation(() => jest.fn(() => false));
       const contracts: any = (await import('../Contracts')).default;
       await expect(
         contracts.finalizeMission(

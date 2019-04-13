@@ -57,17 +57,17 @@ describe('Message class', () => {
       );
     });
 
-    it('should call to Kafka sendParams with message params that contain selfId', async () => {
-      const kafkaMock = {
-        sendParams: jest.fn(params => Promise.resolve(true)),
-      };
-      jest.doMock('../Kafka', () => ({ default: kafkaMock }));
-      // tslint:disable-next-line:variable-name
-      const Message = (await import('../Message')).default;
-      const message = new Message(selfId, messageContent, configuration);
-      const messageParams = new MessageParams({});
-      await message.respond(messageParams);
-      expect(kafkaMock.sendParams.mock.calls[0][1].senderId).toBe(selfId);
-    });
+    // it('should call to Kafka sendParams with message params that contain selfId', async () => {
+    //   const kafkaMock = {
+    //     sendParams: jest.fn(params => Promise.resolve(true)),
+    //   };
+    //   jest.doMock('../Kafka', () => ({ default: kafkaMock }));
+    //   // tslint:disable-next-line:variable-name
+    //   const Message = (await import('../Message')).default;
+    //   const message = new Message(selfId, messageContent, configuration);
+    //   const messageParams = new MessageParams({});
+    //   await message.respond(messageParams);
+    //   expect(kafkaMock.sendParams.mock.calls[0][1].senderId).toBe(selfId);
+    // });
   });
 });
